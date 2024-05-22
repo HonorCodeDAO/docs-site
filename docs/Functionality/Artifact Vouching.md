@@ -14,6 +14,9 @@ HONOR vouched into it and staking rewards allocated to it.
 Vouching grants a user a share of ownership of that artifact. 
 The total amount of vouched directly determines an HONOR price of each unit claimed.
 
+This figure showcases how the artifacts link together to create a reputation network. In step 2, a new artifact is generated. In the final step, HONOR is vouched into the new artifact, benefiting those who supported that component by vouching early.
+<img src={require('@site/static/img/flow_diag.png').default} />
+
 
 
 ## Prediction Market via Vouching Curves 
@@ -22,7 +25,7 @@ To produce an outcome where earlier vouching is more profitable than later,
 price will be determined with a reversible bonding curve, such that the Vouch 
 claim is proportional to a sublinear function of amount of HONOR vouched. Since
 this needs to be both continuous and computationally efficient within a smart 
-contract, a square root function is the simplest choice.
+contract, a square root function is the simplest choice. 
 
 <!-- ```latex
 $$

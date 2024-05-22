@@ -24,7 +24,5 @@ total reward paid out to each holder.
 
 For an additional layer of decreased concentration, the protocol could consider
 connecting payouts to another square root of the accrued Geras. This system thus
-can implement quadratic payouts if there is demand for it, although this creates  
-another source of Sybil incentive. With extra measures such as fixed fees and 
-time bonus, the worst effects of Sybil swarms can be reduced.
+can implement quadratic payouts if the organization decides to, although this creates another source of Sybil incentive. With extra measures such as fixed fees and time bonus, the worst effects of Sybil swarms can be reduced.
 
