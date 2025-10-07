@@ -25,10 +25,10 @@ tokens lack flexibility. STTs aim for the sweet spot between these extremes.
 HONOR tokens enable a number of actions and interactions. 
 
     * Stakers lock up yield-bearing assets (such as staked ETH) and **farm** HONOR
-    * Holders **vouch** for project artifacts
+    * Holders **vouch** HONOR for project artifacts
     * Builders **earn** HONOR for their artifacts
     * Artifact Vouchers **receive reward** from the virtual staked asset
-    * Vouching also allows participants to **allocate** to other artifacts
+    * Vouching also allows participants to **allocate** budget (cash flow) to and between other artifacts
 
 
 ## Why Semi-Transferability?
