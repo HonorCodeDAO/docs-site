@@ -100,9 +100,9 @@ const NETWORK_CONFIGS: { [key: string]: NetworkConfig } = {
     chainId: 10n,
     name: 'Optimism Mainnet',
     contracts: {
-      stt: "0xf77a9d1cA63f8f1BC95DC107704DD2587bdeCfCe", 
-      honorFactory: "",
-      artifactory: "0xYourArtifactoryAddress"
+      stt: "0x1234567890123456789012345678901234567890", 
+      honorFactory: "0x8Dd1dA185430770F48b79608305B3eD6400C6078",
+      artifactory: "0xA898ea12D7F24a52CC592D539D2b6C3e05976bD8"
     }
   }
 };
