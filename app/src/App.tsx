@@ -1108,6 +1108,9 @@ const HelpPanel = () => {
             earning by building, or locking staked ETH to gradually farm. 
             (Currently this staking feature is unavailable.)
 
+            NOTE: Until one receives HONOR as a builder or farmer, the only way to use this 
+            protocol is to create a new org and generate and vouch artifacts.
+
           </p>
           <ul className="list-disc list-inside space-y-1 ml-2">
             <li><strong>Artifacts:</strong> Projects to <strong>generate and vouch</strong> for</li>
