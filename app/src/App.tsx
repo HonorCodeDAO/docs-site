@@ -557,6 +557,13 @@ class ContractManager {
     return tx;
   }
  
+   async vouchArtifactPreview(fromAddress: string, toAddress: string, amount: bigint, isHonor: boolean) {
+    const contract = await this.getSTTContract();
+    const contractWithSigner = contract.connect(this.signer);
+    const amt = await contractWithSigner.vouch.staticCall(fromAddress, toAddress, amount, isHonor, { gasLimit: 400000 });
+    return amt;
+  }
+ 
 
   /**
    * Gets Artifact contract instance with validation
@@ -1266,7 +1273,7 @@ const VouchModal = ({
           // Honor input: honor → vouchIn, vouchOut unknown
           const vouchIn = await fromContract.vouchAmtPerHonor(inputAmount);
 
-          const vouchOut = await sttContract.vouch.staticCall(
+          const vouchOut = await contractManager.vouchArtifactPreview(
             vouchModal.fromArtifact,
             vouchModal.toArtifact,
             inputAmount, 
@@ -1284,7 +1291,7 @@ const VouchModal = ({
           const honor = await fromContract.honorAmtPerVouch(inputAmount);
           // const vouchOut = await toContract.vouchAmtPerHonor(honor);
 
-          const vouchOut = await sttContract.vouch.staticCall(
+          const vouchOut = await contractManager.vouchArtifactPreview(
             vouchModal.fromArtifact,
             vouchModal.toArtifact,
             inputAmount, 
