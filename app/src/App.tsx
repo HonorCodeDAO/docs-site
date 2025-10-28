@@ -532,6 +532,10 @@ class ContractManager {
   async proposeArtifact(fromAddress: string, builderAddress: string, location: string, shouldValidate: boolean) {
     const contract = await this.getSTTContract();
     const contractWithSigner = contract.connect(this.signer);
+    const myAddress = await this.signer.getAddress();
+    const rootArtifact = await this.getArtifactContract(await contract.rootArtifact());
+    console.log("Calling as:", myAddress);
+    console.log("My balance in token contract:", await rootArtifact.balanceOf(myAddress));
     const tx = await contractWithSigner.proposeArtifact(fromAddress, builderAddress, location, shouldValidate);
     return tx;
   }
