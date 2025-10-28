@@ -531,13 +531,23 @@ class ContractManager {
 
   async proposeArtifact(fromAddress: string, builderAddress: string, location: string, shouldValidate: boolean) {
     const contract = await this.getSTTContract();
-    const contractWithSigner = contract.connect(this.signer);
-    const myAddress = await this.signer.getAddress();
-    const rootArtifact = await this.getArtifactContract(await contract.rootArtifact());
-    console.log("Calling as:", myAddress);
-    console.log("My balance in token contract:", await rootArtifact.balanceOf(myAddress));
+    const contractWithSigner = contract.connect(this.signer); 
     const tx = await contractWithSigner.proposeArtifact(fromAddress, builderAddress, location, shouldValidate);
     return tx;
+  }
+
+  async proposeArtifactPreview(fromAddress: string, builderAddress: string, location: string, shouldValidate: boolean) {
+    const contract = await this.getSTTContract();
+    const contractWithSigner = contract.connect(this.signer);
+    
+    const newArtifactAddress = await contractWithSigner.proposeArtifact.staticCall(
+      fromAddress,
+      builderAddress,
+      location,
+      shouldValidate
+    );
+    
+    return newArtifactAddress;
   }
 
   async vouchArtifact(fromAddress: string, toAddress: string, amount: bigint, isHonor: boolean) {
@@ -546,6 +556,7 @@ class ContractManager {
     const tx = await contractWithSigner.vouch(fromAddress, toAddress, amount, isHonor, { gasLimit: 400000 });
     return tx;
   }
+ 
 
   /**
    * Gets Artifact contract instance with validation
@@ -2129,12 +2140,20 @@ export default function Web3ReputationDashboard() {
       
       const sttContract = await contractManager.getSTTContract();
       
-      const newArtifactAddress = await sttContract.proposeArtifact.staticCall(
+      // const newArtifactAddress = await sttContract.proposeArtifact.staticCall(
+      //   fromAddress,
+      //   builderAddress, 
+      //   location,
+      //   shouldValidate,
+      //   { from: await signer.getAddress() }
+      // ); 
+
+      const newArtifactAddress = await contractManager.proposeArtifactPreview(
         fromAddress,
-        builderAddress, 
+        builderAddress,
         location,
         shouldValidate
-      ); 
+      );
 
       // Execute proposeArtifact transaction
       const tx = await contractManager.proposeArtifact(
